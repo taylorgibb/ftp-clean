@@ -14,7 +14,7 @@ inputs:
   exclude:
     description: 'Files and directories which should be excluded from being removed.'
     required: true
-    default: ''
+    default: '["source.zip"]'
 runs:
   using: 'node12'
   main: 'dist/index.js'

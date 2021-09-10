@@ -12356,10 +12356,10 @@ module.exports = require("zlib");
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-var ftp = __nccwpck_require__(7385);
 var core = __nccwpck_require__(6024);
+var ftp = __nccwpck_require__(7385);
 
-var exluded = JSON.parse(core.getInput('exclude') || '["source.zip"]');
+var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
 var host =  core.getInput('host', { required: true })
 var user =  core.getInput('user', { required: true })
 var password =  core.getInput('password', { required: true })
@@ -12374,7 +12374,7 @@ var password =  core.getInput('password', { required: true })
     for (var i = 0; i < list.length; i++) {
         var current = list[i];
         console.log("Deleting: " + current.name);
-        if(exluded.filter(obj => obj == current.name) == 0 && current.name != "web.config"){
+        if(excluded.filter(obj => obj == current.name) == 0 && current.name != "web.config"){
             switch(current.type){
                 case '-':
                     await ftp.delete(current.name)

@@ -1,7 +1,7 @@
-var ftp = require('promise-ftp');
 var core = require('@actions/core');
+var ftp = require('promise-ftp');
 
-var exluded = JSON.parse(core.getInput('exclude') || '["source.zip"]');
+var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
 var host =  core.getInput('host', { required: true })
 var user =  core.getInput('user', { required: true })
 var password =  core.getInput('password', { required: true })
@@ -16,7 +16,7 @@ var password =  core.getInput('password', { required: true })
     for (var i = 0; i < list.length; i++) {
         var current = list[i];
         console.log("Deleting: " + current.name);
-        if(exluded.filter(obj => obj == current.name) == 0 && current.name != "web.config"){
+        if(excluded.filter(obj => obj == current.name) == 0 && current.name != "web.config"){
             switch(current.type){
                 case '-':
                     await ftp.delete(current.name)
