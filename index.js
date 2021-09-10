@@ -1,12 +1,11 @@
-var PromiseFtp = require('promise-ftp');
+var ftp = require('promise-ftp');
 
 var exluded = JSON.parse(core.getInput('exclude')) || ['source.zip'];
 var host =  core.getInput('host', { required: true });
 var user =  core.getInput('user', { required: true });
 var password =  core.getInput('password', { required: true });
 
-(async function clean(host, user, password) {
-    var ftp = new PromiseFtp();
+(async function clean(host, user, password, ftp) {
     await ftp.connect({ host: host, user: user, password: password });
     var list = await ftp.list('/')
     if(list.filter(obj => obj.name == 'web.config').length > 0){
@@ -28,4 +27,4 @@ var password =  core.getInput('password', { required: true });
         }
     }
     await ftp.end();
-})(host, user, password);
+})(host, user, password, new ftp());
