@@ -12359,6 +12359,8 @@ var __webpack_exports__ = {};
 var core = __nccwpck_require__(6024);
 var ftp = __nccwpck_require__(7385);
 
+core.info('Thank you for using ftp-clean!');
+
 var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
 var host =  core.getInput('host', { required: true })
 var user =  core.getInput('user', { required: true })
