@@ -12361,10 +12361,11 @@ var ftp = __nccwpck_require__(7385);
 
 core.info('Thank you for using ftp-clean!');
 
-var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
 var host =  core.getInput('host', { required: true })
 var user =  core.getInput('user', { required: true })
 var password =  core.getInput('password', { required: true })
+
+var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
 
 (async function clean(host, user, password, ftp) {
     await ftp.connect({ host: host, user: user, password: password });
