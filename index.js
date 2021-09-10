@@ -1,9 +1,10 @@
 var ftp = require('promise-ftp');
+var core = require('@actions/core');
 
-var exluded = JSON.parse(core.getInput('exclude')) || ['source.zip'];
-var host =  core.getInput('host', { required: true });
-var user =  core.getInput('user', { required: true });
-var password =  core.getInput('password', { required: true });
+var exluded = JSON.parse(core.getInput('exclude') || '["source.zip"]');
+var host =  core.getInput('host', { required: true })
+var user =  core.getInput('user', { required: true })
+var password =  core.getInput('password', { required: true })
 
 (async function clean(host, user, password, ftp) {
     await ftp.connect({ host: host, user: user, password: password });
