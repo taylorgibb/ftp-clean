@@ -12387,7 +12387,6 @@ var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
     }
     await ftp.end();
 })(host, user, password, new ftp());
-
 })();
 
 module.exports = __webpack_exports__;
