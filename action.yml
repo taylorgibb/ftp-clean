@@ -1,6 +1,6 @@
 name: 'ftp-clean'
 author: 'Taylor Gibb <taylor@developerhut.co.za>'
-description: 'Delete all files in the root of an FTP location, with exlusion filters.'
+description: 'Github action to clean an FTP location'
 inputs:
   host:
     description: 'FTP host'
