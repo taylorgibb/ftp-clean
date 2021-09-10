@@ -1,12 +1,9 @@
 var core = require('@actions/core');
 var ftp = require('promise-ftp');
 
-core.info('Thank you for using ftp-clean!');
-
 var host =  core.getInput('host', { required: true })
 var user =  core.getInput('user', { required: true })
 var password =  core.getInput('password', { required: true })
-
 var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
 
 (async function clean(host, user, password, ftp) {
@@ -18,8 +15,8 @@ var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
     }
     for (var i = 0; i < list.length; i++) {
         var current = list[i];
-        console.log("Deleting: " + current.name);
         if(excluded.filter(obj => obj == current.name) == 0 && current.name != "web.config"){
+            console.log("Deleting: " + current.name);
             switch(current.type){
                 case '-':
                     await ftp.delete(current.name)
