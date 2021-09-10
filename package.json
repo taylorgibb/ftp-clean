@@ -1,0 +1,15 @@
+{
+  "name": "ftp-clean",
+  "version": "1.0.0",
+  "description": "Github action to clean an FTP location.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build index.js --license licenses.txt"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.5.0",
+    "promise-ftp": "github:taylorgibb/promise-ftp"
+  }
+}

@@ -1,0 +1,23 @@
+name: 'ftp-clean'
+author: 'Taylor Gibb <taylor@developerhut.co.za>'
+description: 'Delete all files in the root of an FTP location, with exlusion filters.'
+inputs:
+  host:
+    description: 'FTP host'
+    required: true
+  user:
+    description: 'FTP user'
+    required: true
+  password:
+    description: 'FTP password'
+    required: true
+  exclude:
+    description: 'Files and directories which should be excluded from being removed.'
+    required: true
+    default: ''
+runs:
+  using: 'node12'
+  main: 'index.js'
+branding:
+  color: 'orange'
+  icon: 'delete'
