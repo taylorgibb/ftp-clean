@@ -12373,7 +12373,8 @@ var excluded = JSON.parse(core.getInput('exclude',  { required: true }));
     }
     for (var i = 0; i < list.length; i++) {
         var current = list[i];
-        if(excluded.filter(obj => obj == current.name) == 0 && current.name != "web.config"){
+        var system_exclusions = ["web.config", ".", ".."]
+        if(excluded.filter(obj => obj == current.name) == 0 && system_exclusions.filter(obj => obj == current.name) == 0){
             console.log("Deleting: " + current.name);
             switch(current.type){
                 case '-':
